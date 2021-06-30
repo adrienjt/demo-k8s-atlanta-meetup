@@ -2,25 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-us-west-2
+  name: hello-world-us
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: hello-world
-      region: us-west-2
+      region: us
   template:
     metadata:
       annotations:
         multicluster.admiralty.io/elect: ""
-        multicluster.admiralty.io/no-reservation: ""
-        multicluster.admiralty.io/use-constraints-from-spec-for-proxy-pod-scheduling: ""
       labels:
         app: hello-world
-        region: us-west-2
+        region: us
     spec:
       nodeSelector:
-        topology.kubernetes.io/region: us-west-2
+        topology.kubernetes.io/region: us
       containers:
         - image: adamgolab/hello-world
           name: hello-world
@@ -37,25 +35,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-eu-west-3
+  name: hello-world-eu
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: hello-world
-      region: eu-west-3
+      region: eu
   template:
     metadata:
       annotations:
         multicluster.admiralty.io/elect: ""
-        multicluster.admiralty.io/no-reservation: ""
-        multicluster.admiralty.io/use-constraints-from-spec-for-proxy-pod-scheduling: ""
       labels:
         app: hello-world
-        region: eu-west-3
+        region: eu
     spec:
       nodeSelector:
-        topology.kubernetes.io/region: eu-west-3
+        topology.kubernetes.io/region: eu
       containers:
         - image: adamgolab/hello-world
           name: hello-world
